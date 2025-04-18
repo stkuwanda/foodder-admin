@@ -1,6 +1,9 @@
-import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar.component';
 import SideBar from './components/SideBar/SideBar.component';
+import Add from './pages/Add/Add.page';
+import List from './pages/List/List.page';
+import Orders from './pages/Orders/Orders.page';
 import './App.css';
 
 function App() {
@@ -10,6 +13,11 @@ function App() {
 			<hr />
 			<main className='app-content'>
         <SideBar />
+				<Routes>
+					<Route path='/add' element={<Add />} />
+					<Route path='/list' element={<List />} />
+					<Route path='/orders' element={<Orders />} />
+				</Routes>
       </main>
 		</div>
 	);
