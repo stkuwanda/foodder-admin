@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './components/NavBar/NavBar.component';
 import SideBar from './components/SideBar/SideBar.component';
+import './App.css';
 
 function App() {
 	return (
