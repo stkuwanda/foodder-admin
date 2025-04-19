@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { assets } from '../../assets/assets';
 import './Add.page.css';
 
@@ -31,6 +32,8 @@ function Add() {
 		const response = await axios.post(`${url}/api/food/add`, formData);
 
 		if(response.data.success) {
+			toast.success(response.data.message);
+
 			setData({
 				name: '',
 				description: '',
@@ -39,7 +42,7 @@ function Add() {
 			});
 			setImage(false);
 		} else {
-			console.log(response.data.message);
+			toast.error(response.data.message);
 		}
 	}
 
@@ -70,6 +73,7 @@ function Add() {
 						type='text'
 						name='name'
 						placeholder='Enter product name'
+						required
 					/>
 				</div>
 				<div className='add-product-description flex-col'>
@@ -80,6 +84,7 @@ function Add() {
 						name='description'
 						rows='6'
 						placeholder='Write description here'
+						required
 					></textarea>
 				</div>
 				<div className='add-category-and-price'>
@@ -89,6 +94,7 @@ function Add() {
 							onChange={onChangeHandler}
 							value={data.category}
 							name='category'
+							required
 						>
 							<option value='Salad'>Salad</option>
 							<option value='Rolls'>Rolls</option>
@@ -110,6 +116,7 @@ function Add() {
 							type='number'
 							name='price'
 							placeholder='$20'
+							required
 						/>
 					</div>
 				</div>

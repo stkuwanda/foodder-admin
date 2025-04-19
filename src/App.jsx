@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import NavBar from './components/NavBar/NavBar.component';
 import SideBar from './components/SideBar/SideBar.component';
 import Add from './pages/Add/Add.page';
@@ -9,6 +10,7 @@ import './App.css';
 function App() {
 	return (
 		<div>
+			<ToastContainer />
 			<NavBar />
 			<hr />
 			<main className='app-content'>
