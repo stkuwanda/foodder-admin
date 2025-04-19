@@ -2,10 +2,11 @@ import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { assets } from '../../assets/assets';
+import { serverUrl } from '../../utils';
 import './Add.page.css';
 
+
 function Add() {
-	const url = 'http://localhost:4000';
 	const [image, setImage] = useState(false);
 	const [data, setData] = useState({
 		name: '',
@@ -29,9 +30,9 @@ function Add() {
 		formData.append('category', data.category);
 		formData.append('image', image);
 
-		const response = await axios.post(`${url}/api/food/add`, formData);
+		const response = await axios.post(`${serverUrl}/api/food/add`, formData);
 
-		if(response.data.success) {
+		if (response.data.success) {
 			toast.success(response.data.message);
 
 			setData({
@@ -40,6 +41,7 @@ function Add() {
 				price: '',
 				category: 'Pastries',
 			});
+
 			setImage(false);
 		} else {
 			toast.error(response.data.message);
