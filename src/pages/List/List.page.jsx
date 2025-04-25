@@ -37,7 +37,7 @@ function List() {
 
 	return (
 		<section className='list add flex-col'>
-			<p>All Foods</p>
+			<h2>All Foods</h2>
 			<div className='list-table'>
 				<div className='list-table-format title'>
 					<b>Image</b>
