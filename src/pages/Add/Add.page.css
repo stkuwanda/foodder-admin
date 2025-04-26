@@ -40,3 +40,32 @@
   color: white;
   cursor: pointer;
 }
+
+@media (max-width: 900px) {
+  .add-img-upload.flex-col, .add-product-name.flex-col, .add-product-description.flex-col {
+    align-items: stretch;
+    text-align: center;
+    width: 100%;
+  }
+
+  .add-category-and-price {
+    flex-direction: column;
+  }
+
+  .add-category-and-price select, .add-category-and-price input {
+    max-width: none;
+  }
+
+  .add-category.flex-col, .add-price.flex-col {
+    text-align: center;
+    align-items: stretch;
+  }
+
+  .add-btn {
+    max-width: none;
+  }
+
+  section.add form.flex-col {
+    margin-bottom: 30px;
+  }
+}
