@@ -26,3 +26,9 @@
     display: none;
   }
 }
+
+@media (max-width: 900px) {
+  section.list.add.flex-col h2 {
+    text-align: center;
+  }
+}
