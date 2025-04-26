@@ -35,30 +35,30 @@ function Orders() {
 						<img src={assets.parcel_icon} alt='Parcel icon image' />
 						<div>
 							<p className='order-item-food'>
-                {order.items.map((item, i) => {
-                  if(i === (order.items.length - 1)) {
-                    return `${item.name} x ${item.quantity}`;
-                  } else {
-                    return `${item.name} x ${item.quantity},`;
-                  }
-                })}
-              </p>
-              <p className='order-item-name'>
-                {`${order.address.firstName} ${order.address.lastName}`}
-              </p>
-              <div className="order-item-address">
-                <p>{`${order.address.street},`}</p>
-                <p>{`${order.address.city}, ${order.address.province}, ${order.address.country}`}</p>
-              </div>
-              <p className="order-item-phone">{order.address.phone}</p>
+								{order.items.map((item, i) => {
+									if (i === order.items.length - 1) {
+										return `${item.name} x ${item.quantity}`;
+									} else {
+										return `${item.name} x ${item.quantity},`;
+									}
+								})}
+							</p>
+							<p className='order-item-name'>
+								{`${order.address.firstName} ${order.address.lastName}`}
+							</p>
+							<div className='order-item-address'>
+								<p>{`${order.address.street},`}</p>
+								<p>{`${order.address.city}, ${order.address.province}, ${order.address.country}`}</p>
+							</div>
+							<p className='order-item-phone'>{order.address.phone}</p>
 						</div>
-            <p>Items : {order.items.length}</p>
-            <p>${order.amount}</p>
-            <select>
-              <option value="Food Processing">Food Processing</option>
-              <option value="Out for delivery">Out for delivery</option>
-              <option value="Deliverd">Delivered</option>
-            </select>
+						<p>Items : {order.items.length}</p>
+						<p>${order.amount}</p>
+						<select>
+							<option value='Food Processing'>Food Processing</option>
+							<option value='Out for delivery'>Out for delivery</option>
+							<option value='Deliverd'>Delivered</option>
+						</select>
 					</div>
 				))}
 			</div>
