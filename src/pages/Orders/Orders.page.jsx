@@ -7,7 +7,6 @@ import './Orders.page.css';
 
 function Orders() {
 	const [orders, setOrders] = useState([]);
-	console.log(orders);
 
 	async function fetchAllOrders() {
 		try {
@@ -22,6 +21,20 @@ function Orders() {
 		}
 	}
 
+	async function onStatusChangeHandler(event, orderId) {
+		console.log(`${event.target.value }`);
+
+		try {
+			const response = await axios.post(`${serverUrl}/api/order/status`, { orderId, status: event.target.value });
+
+			if(response.data.success) {
+				await fetchAllOrders();
+			}
+		} catch {
+			toast.error('Something went wrong. Try again.');
+		} 
+	}
+
 	useEffect(() => {
 		fetchAllOrders();
 	}, []);
@@ -31,7 +44,7 @@ function Orders() {
 			<h2>Order Page</h2>
 			<div className='orders-list'>
 				{orders.map((order) => (
-					<div className='order-item'>
+					<div key={order._id} className='order-item'>
 						<img src={assets.parcel_icon} alt='Parcel icon image' />
 						<div>
 							<p className='order-item-food'>
@@ -54,7 +67,7 @@ function Orders() {
 						</div>
 						<p>Items : {order.items.length}</p>
 						<p>${order.amount}</p>
-						<select>
+						<select onChange={(event) => onStatusChangeHandler(event, order._id)} value={order.status}>
 							<option value='Food Processing'>Food Processing</option>
 							<option value='Out for delivery'>Out for delivery</option>
 							<option value='Deliverd'>Delivered</option>
