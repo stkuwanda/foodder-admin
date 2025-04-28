@@ -3,9 +3,10 @@ import { authContext as AuthContext } from './AuthContext.tools';
 
 function AuthProvider({ children }) {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoginPopup, setIsLoginPopup] = useState(false);
 	const [token, setToken] = useState('');
 
-	function setAuthToken() {
+	function onLoadAppSetAuthToken() {
 		if (localStorage.getItem('token')) {
 			setToken(localStorage.getItem('token'));
 			setIsLoggedIn(true);
@@ -15,17 +16,28 @@ function AuthProvider({ children }) {
 	function logout() {
 		localStorage.setItem('token', '');
 		setIsLoggedIn(false);
+		setToken('');
+	}
+
+	function login(token) {
+		setToken(token);
+		localStorage.setItem('token', token);
+		setIsLoggedIn(true)
+		setIsLoginPopup(false);
 	}
 
 	useEffect(() => {
-		setAuthToken();
+		onLoadAppSetAuthToken();
 	}, []);
 
 	const contextValue = {
 		isLoggedIn,
 		setIsLoggedIn,
 		logout,
-		setAuthToken,
+		onLoadAppSetAuthToken,
+		login,
+		setIsLoginPopup,
+		isLoginPopup,
 		token,
 	};
 	return (

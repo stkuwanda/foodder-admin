@@ -1,0 +1,11 @@
+import './NotFound.page.css';
+
+function NotFound() {
+  return (
+    <div>
+      404 Not Found!
+    </div>
+  )
+}
+
+export default NotFound;

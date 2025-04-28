@@ -5,7 +5,7 @@ import { useAuthContext } from '../../contexts/AuthContext/AuthContext.tools';
 import './NavBar.component.css';
 
 function NavBar() {
-	const { isLoggedIn, logout } = useAuthContext();
+	const { isLoggedIn, logout, setIsLoginPopup } = useAuthContext();
 
 	return (
 		<nav>
@@ -22,14 +22,14 @@ function NavBar() {
 							alt='Profile image'
 						/>
 						<ul className='navbar-profile-dropdown'>
-							<li onclick={logout}>
+							<li onClick={logout}>
 								<img src={assets.logout_icon} alt='Image of a logout icon' />
 								<p>Logout</p>
 							</li>
 						</ul>
 					</div>
 				) : (
-					<button>sign in</button>
+					<button onClick={() => setIsLoginPopup(true)}>sign in</button>
 				)}
 			</div>
 		</nav>
