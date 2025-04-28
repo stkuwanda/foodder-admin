@@ -6,21 +6,31 @@ import Add from './pages/Add/Add.page';
 import List from './pages/List/List.page';
 import Orders from './pages/Orders/Orders.page';
 import './App.css';
+import AuthRouteGaurd from './components/AuthRouteGuard/AuthRouteGaurd.component';
+import { useAuthContext } from './contexts/AuthContext/AuthContext.tools';
 
 function App() {
+	const { isLoggedIn } = useAuthContext();
+
 	return (
 		<div>
 			<ToastContainer />
 			<NavBar />
-			<hr />
+			{isLoggedIn ? <hr /> : undefined}
 			<main className='app-content'>
-        <SideBar />
+				{isLoggedIn ? <SideBar /> : undefined}
 				<Routes>
-					<Route path='/add' element={<Add />} />
-					<Route path='/list' element={<List />} />
-					<Route path='/orders' element={<Orders />} />
+					<Route path='/add' element={<AuthRouteGaurd />}>
+						<Route index element={<Add />} />
+					</Route>
+					<Route path='/list' element={<AuthRouteGaurd />}>
+						<Route index element={<List />} />
+					</Route>
+					<Route path='/orders' element={<AuthRouteGaurd />}>
+						<Route index element={<Orders />} />
+					</Route>
 				</Routes>
-      </main>
+			</main>
 		</div>
 	);
 }
