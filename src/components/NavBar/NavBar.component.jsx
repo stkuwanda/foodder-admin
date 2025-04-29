@@ -19,8 +19,8 @@ function NavBar() {
 					<div className='navbar-profile'>
 						<img
 							className='profile'
-							src={assets.profile_image}
-							alt='Profile image'
+							src={assets.profile_icon}
+							alt='Profile icon image'
 						/>
 						<ul className='navbar-profile-dropdown'>
 							<li onClick={() => navigate('/add')}>

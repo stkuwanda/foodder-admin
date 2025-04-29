@@ -3,6 +3,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 8px 4%;
+	background-color: #fff;
 }
 
 nav .logo {
@@ -36,6 +37,10 @@ nav .profile {
 
 .navbar-profile {
 	position: relative;
+}
+
+.navbar-profile img {
+	width: 20px;
 }
 
 .navbar-profile-dropdown {

@@ -1,0 +1,35 @@
+.home {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: url('/food.png');
+  background-size: cover;
+}
+
+.h-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 650px;
+  transform: translate(-50%,-50%);
+  color: #fff;
+  background-color: #ff6347b3;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.h-text span {
+  letter-spacing: 5px;
+}
+
+.h-text .click {
+  cursor: pointer;
+}
+
+.h-text h1 {
+  font-size: 3.5em;
+}
+

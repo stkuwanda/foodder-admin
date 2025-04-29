@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { authContext as AuthContext } from './AuthContext.tools';
+import { useNavigate } from 'react-router-dom';
 
 function AuthProvider({ children }) {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isLoginPopup, setIsLoginPopup] = useState(false);
 	const [token, setToken] = useState('');
+	const navigate = useNavigate();
 
 	function onLoadAppSetAuthToken() {
 		if (localStorage.getItem('token')) {
@@ -17,6 +19,7 @@ function AuthProvider({ children }) {
 		localStorage.setItem('token', '');
 		setIsLoggedIn(false);
 		setToken('');
+		navigate('/');
 	}
 
 	function login(token) {
